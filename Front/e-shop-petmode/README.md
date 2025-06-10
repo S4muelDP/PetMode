@@ -1,5 +1,8 @@
 # Tienda de Mascotas – React + TypeScript + Vite
 
+![image](https://github.com/user-attachments/assets/3591d794-2d83-45c5-8c01-42fad0e90d38)
+
+
 Este proyecto es una **aplicación web para una tienda de mascotas**, construida con **React**, **TypeScript** y **Vite**. Proporciona una configuración mínima pero moderna, con recarga en caliente (HMR) y reglas de ESLint para mantener un código limpio y consistente.
 
 ## Tecnologías utilizadas
@@ -106,3 +109,4 @@ La aplicación tiene como propósito permitir a los usuarios explorar productos,
 ---
 
 ¡Este proyecto es una tienda de mascotas moderna, rápida y escalable usando tecnología de última generación! 🐶🐱🐾
+
