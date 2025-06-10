@@ -70,7 +70,7 @@ La aplicación tiene como propósito permitir a los usuarios explorar productos,
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tienda-mascotas.git
+   git clone https://github.com/S4muelDP/PetMode.git
    cd tienda-mascotas
    ```
 
