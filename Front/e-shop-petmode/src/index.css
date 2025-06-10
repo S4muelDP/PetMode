@@ -2,7 +2,7 @@
 
 @layer base {
   html, body, #root {
-    background-color: #000000; /* Equivalente a bg-gray-100 */
+    background-color: #F8F8F0; /* Equivalente a bg-gray-100 */
     min-height: 100vh;
   }
 }
