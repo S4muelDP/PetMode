@@ -2,6 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/3591d794-2d83-45c5-8c01-42fad0e90d38)
 
+![alt text](Animation_petMode.gif)
 
 Este proyecto es una **aplicación web para una tienda de mascotas**, construida con **React**, **TypeScript** y **Vite**. Proporciona una configuración mínima pero moderna, con recarga en caliente (HMR) y reglas de ESLint para mantener un código limpio y consistente.
 

@@ -1,11 +1,23 @@
+// components/Navbar.tsx
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { FaGlobeAmericas } from "react-icons/fa";
+import { LoginModal } from "../../login/LoginModal";
+import { useAuth } from "../../../Hooks/useAuth";
+import { FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../../../Context/CartContext";
 
 const Navbar = () => {
+  // ✅ CORRECTO - Hook llamado dentro del componente
+  const { cartCount } = useCart();
+  
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
   const [language, setLanguage] = useState("es");
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+
+  const location = useLocation();
+  const { user, login, logout } = useAuth();
 
   const navItems = [
     { label: "Inicio", path: "/" },
@@ -22,19 +34,12 @@ const Navbar = () => {
     <nav className="bg-[#fef9f3] text-gray-800 sticky top-0 z-50 shadow-md w-full">
       <div className="w-full flex items-center justify-between px-4 py-4">
         {/* Logo */}
-        {/* <div className="flex-shrink-0">
-          <h1 className="text-2xl font-bold text-gray-800">🐾 PetMode </h1>
-        </div> */}
         <div className="flex items-center gap-3 mb-2">
-         <img 
-             src="/src/assets/dog-paw.svg" 
-             alt="PetMode Logo" 
-             className="w-15 h-8 object-contain"
-             />
-           <h3 className="text-3xl font-bold">PetMode</h3>
+          <img src="/src/assets/dog-paw.svg" alt="PetMode Logo" className="w-15 h-8 object-contain" />
+          <h3 className="text-3xl font-bold">PetMode</h3>
         </div>
 
-        {/* Enlaces */}
+        {/* Links */}
         <div className="hidden md:flex items-center justify-center flex-1">
           <div className="flex space-x-8">
             {navItems.map((item) => (
@@ -49,8 +54,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Idioma */}
-        <div className="hidden md:flex items-center space-x-4">
+        {/* Right-side controls */}
+        <div className="hidden md:flex items-center space-x-4 relative">
+          {/* Idioma */}
           <div className="flex items-center space-x-2 bg-white px-2 py-1 rounded-md border border-gray-300">
             <FaGlobeAmericas className="text-cyan-700" />
             <select
@@ -62,9 +68,48 @@ const Navbar = () => {
               <option value="es">🇪🇸 ES</option>
             </select>
           </div>
+
+          {/* Icono carrito */}
+          <div className="relative">
+            <FaShoppingCart className="text-2xl text-cyan-500 cursor-pointer" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </div>
+
+          {/* Login / User */}
+          {!user ? (
+            <button onClick={() => setShowLoginModal(true)} className="text-sm font-medium hover:text-orange-500">
+              Iniciar sesión
+            </button>
+          ) : (
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="text-sm font-medium hover:text-orange-500"
+              >
+                {user}
+              </button>
+              {userMenuOpen && (
+                <div className="absolute right-0 mt-2 bg-white border rounded shadow-lg w-40 z-50">
+                  <button
+                    onClick={() => {
+                      logout();
+                      setUserMenuOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                  >
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Menú hamburguesa */}
+        {/* Mobile menu button */}
         <div className="md:hidden">
           <button
             className="text-gray-700 text-2xl"
@@ -75,7 +120,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Menú móvil */}
+      {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden flex flex-col items-center space-y-4 pb-4">
           {navItems.map((item) => (
@@ -88,10 +133,9 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-
-          {/* Idioma móvil */}
+          {/* Idioma */}
           <div className="flex items-center space-x-2 bg-white px-2 py-1 rounded-md border border-gray-300">
-            <FaGlobeAmericas className="text-orange-500" />
+            <FaGlobeAmericas className="text-cyan-500" />
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
@@ -101,7 +145,28 @@ const Navbar = () => {
               <option value="es">🇪🇸 ES</option>
             </select>
           </div>
+          {/* Login/Logout in mobile */}
+          {!user ? (
+            <button onClick={() => setShowLoginModal(true)} className="text-sm font-medium text-cyan-500">
+              Iniciar sesión
+            </button>
+          ) : (
+            <button onClick={logout} className="text-sm font-medium text-red-500">
+              Cerrar sesión
+            </button>
+          )}
         </div>
+      )}
+
+      {/* Login Modal */}
+      {showLoginModal && (
+        <LoginModal
+          onClose={() => setShowLoginModal(false)}
+          onLoginSuccess={(username) => {
+            login(username);
+            setShowLoginModal(false);
+          }}
+        />
       )}
     </nav>
   );
