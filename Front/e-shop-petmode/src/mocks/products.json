@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "name": "Collar ajustable para perro",
+    "description": "Collar de nylon resistente para perros medianos.",
+    "price": 25000,
+    "image": "/src/assets/collar_ajustable_perro.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Juguete interactivo para gato",
+    "description": "Pelota con cascabel para estimular el juego.",
+    "price": 18000,
+    "image": "/src/assets/juguete_interativo_gato.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Cama suave para mascota",
+    "description": "Cama acolchada para perros o gatos pequeños.",
+    "price": 75000,
+    "image": "/src/assets/cama_suave_mascotas_gatos.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Comedero doble de acero",
+    "description": "Dos compartimentos para comida y agua.",
+    "price": 38500,
+    "image": "/src/assets/comdero_doble_acero.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Rascador para gatos",
+    "description": "Poste con cuerda de sisal ideal para afilar garras.",
+    "price": 42000,
+    "image": "/src/assets/Rascador_para_gatos.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Arnés para perro",
+    "description": "Arnés con ajuste cómodo para paseos seguros.",
+    "price": 30000,
+    "image": "/src/assets/Arnés_para_perro.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Bolsa de arena para gato",
+    "description": "Arena absorbente con control de olores.",
+    "price": 20000,
+    "image": "/src/assets/Bolsa_de_arena_para_gato.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Shampoo hipoalergénico",
+    "description": "Ideal para pieles sensibles de mascotas.",
+    "price": 22500,
+    "image": "/src/assets/Shampoo_hipoalergénico.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Pelota para perro con sonido",
+    "description": "Estimula el juego y la actividad física.",
+    "price": 10000,
+    "image": "/src/assets/Pelota_para_perro_con_sonido.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Correa extensible",
+    "description": "Permite libertad controlada durante paseos.",
+    "price": 45000,
+    "image": "/src/assets/Correa_extensible.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Casa para gato",
+    "description": "Estructura cómoda para descansar y esconderse.",
+    "price": 95000,
+    "image": "/src/assets/Casa_para_gato.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Galletas para perro",
+    "description": "Snacks naturales con sabor a pollo.",
+    "price": 12000,
+    "image": "/src/assets/Galletas_para_perro.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Juguete en forma de hueso",
+    "description": "Mordedera de goma no tóxica.",
+    "price": 9500,
+    "image": "/src/assets/Juguete_en_forma_de_hueso.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Cepillo para pelaje",
+    "description": "Elimina pelo suelto y masajea la piel.",
+    "price": 14000,
+    "image": "/src/assets/Cepillo_para_pelaje.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Transportín para mascotas",
+    "description": "Caja segura para transportar mascotas pequeñas.",
+    "price": 120000,
+    "image": "/src/assets/Transportín_para_mascotas.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Fuente de agua para gatos",
+    "description": "Flujo constante de agua fresca.",
+    "price": 85000,
+    "image": "/src/assets/Fuente_de_agua_para_gatos.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Ropa para perro",
+    "description": "Abrigo acolchado ideal para climas fríos.",
+    "price": 55000,
+    "image": "/src/assets/Ropa_para_perro.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Snack dental para perro",
+    "description": "Ayuda a mantener dientes limpios y encías sanas.",
+    "price": 16000,
+    "image": "/src/assets/Snack_dental_para_perro.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Juguete láser para gato",
+    "description": "Diversión sin fin para gatos activos.",
+    "price": 22000,
+    "image": "/src/assets/Juguete_láser_para_gato.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Bolso para mascotas",
+    "description": "Bolso estilo mochila para pasear cómodamente.",
+    "price": 98000,
+    "image": "/src/assets/Bolso_para_mascotas.jpg"
+  }
+] 

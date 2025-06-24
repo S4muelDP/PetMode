@@ -6,6 +6,8 @@ import { LoginModal } from "../../login/LoginModal";
 import { useAuth } from "../../../Hooks/useAuth";
 import { FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../../../Context/CartContext";
+import { AuthModal } from '../../login/AuthModal';
+import { CartModal } from "../../../Components/CartModal";
 
 const Navbar = () => {
   // ✅ CORRECTO - Hook llamado dentro del componente
@@ -13,8 +15,10 @@ const Navbar = () => {
   
   const [isOpen, setIsOpen] = useState(false);
   const [language, setLanguage] = useState("es");
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
   const location = useLocation();
   const { user, login, logout } = useAuth();
@@ -34,10 +38,10 @@ const Navbar = () => {
     <nav className="bg-[#fef9f3] text-gray-800 sticky top-0 z-50 shadow-md w-full">
       <div className="w-full flex items-center justify-between px-4 py-4">
         {/* Logo */}
-        <div className="flex items-center gap-3 mb-2">
+        <Link to="/" className="flex items-center gap-3 mb-2 cursor-pointer">
           <img src="/src/assets/dog-paw.svg" alt="PetMode Logo" className="w-15 h-8 object-contain" />
           <h3 className="text-3xl font-bold">PetMode</h3>
-        </div>
+        </Link>
 
         {/* Links */}
         <div className="hidden md:flex items-center justify-center flex-1">
@@ -71,7 +75,7 @@ const Navbar = () => {
 
           {/* Icono carrito */}
           <div className="relative">
-            <FaShoppingCart className="text-2xl text-cyan-500 cursor-pointer" />
+            <FaShoppingCart className="text-2xl text-cyan-500 cursor-pointer" onClick={() => setShowCart(true)} />
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {cartCount}
@@ -81,9 +85,14 @@ const Navbar = () => {
 
           {/* Login / User */}
           {!user ? (
-            <button onClick={() => setShowLoginModal(true)} className="text-sm font-medium hover:text-orange-500">
-              Iniciar sesión
-            </button>
+            <>
+              <button onClick={() => { setAuthMode('login'); setShowAuthModal(true); }} className="text-sm font-medium hover:text-orange-500">
+                Iniciar sesión
+              </button>
+              <button onClick={() => { setAuthMode('register'); setShowAuthModal(true); }} className="text-sm font-medium hover:text-cyan-600 ml-2">
+                Registrarse
+              </button>
+            </>
           ) : (
             <div className="relative">
               <button
@@ -147,9 +156,14 @@ const Navbar = () => {
           </div>
           {/* Login/Logout in mobile */}
           {!user ? (
-            <button onClick={() => setShowLoginModal(true)} className="text-sm font-medium text-cyan-500">
-              Iniciar sesión
-            </button>
+            <>
+              <button onClick={() => { setAuthMode('login'); setShowAuthModal(true); }} className="text-sm font-medium text-cyan-500">
+                Iniciar sesión
+              </button>
+              <button onClick={() => { setAuthMode('register'); setShowAuthModal(true); }} className="text-sm font-medium text-cyan-600 ml-2">
+                Registrarse
+              </button>
+            </>
           ) : (
             <button onClick={logout} className="text-sm font-medium text-red-500">
               Cerrar sesión
@@ -159,14 +173,19 @@ const Navbar = () => {
       )}
 
       {/* Login Modal */}
-      {showLoginModal && (
-        <LoginModal
-          onClose={() => setShowLoginModal(false)}
-          onLoginSuccess={(username) => {
+      {showAuthModal && (
+        <AuthModal
+          mode={authMode}
+          onClose={() => setShowAuthModal(false)}
+          onAuthSuccess={(username) => {
             login(username);
-            setShowLoginModal(false);
+            setShowAuthModal(false);
           }}
         />
+      )}
+
+      {showCart && (
+        <CartModal onClose={() => setShowCart(false)} />
       )}
     </nav>
   );

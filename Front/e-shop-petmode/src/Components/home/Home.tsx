@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Heart, Star, ShoppingCart, Truck, Shield, Award, Phone, Mail, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [favorites, setFavorites] = useState(new Set());
+  const navigate = useNavigate();
 
   const toggleFavorite = (id) => {
     const newFavorites = new Set(favorites);
@@ -38,7 +40,10 @@ const Home = () => {
           <p className="text-lg sm:text-xl text-gray-100 mb-8 max-w-lg drop-shadow-md">
             Todo lo que tu mascota necesita para una vida feliz y saludable
           </p>
-          <button className="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg backdrop-blur-sm">
+          <button
+            className="bg-cyan-600 hover:bg-cyan-500 text-white px-8 py-4 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg backdrop-blur-sm"
+            onClick={() => navigate('/productos')}
+          >
             Explorar Productos
           </button>
         </div>
